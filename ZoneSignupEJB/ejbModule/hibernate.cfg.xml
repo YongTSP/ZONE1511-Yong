@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- This document is needed by Hibernate to configure the connection to the database -->
+
+<hibernate-configuration>
+
+    <session-factory>
+    	
+		<!--  Datasource to use, this one is created and configured in Glassfish console-->
+		<property name="connection.datasource">jdbc/__default</property>
+		
+		<!--  Which type of database is Hibernate connecting to-->
+        <property name="dialect">org.hibernate.dialect.DB2Dialect</property>
+
+		<!--  Cache option-->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+		<!-- To show SQL statement executed inside Hibernate -->
+        <property name="show_sql">true</property>
+
+		<!-- How to deal with previous schema, drop-create, validate, create, ... -->
+        <property name="hbm2ddl.auto">validate</property>
+
+		<!-- Classes to be included in schema generation, must be properly annotated as an entity -->
+        <mapping class="entity.MemberEntity"/>
+        <mapping class="entity.BillingEntity"/>
+        <mapping class="entity.AccountEntity"/>
+        <mapping class="entity.ClientEntity"/>
+        <mapping class="entity.AccountLCR"/>
+        <mapping class="entity.CarrierEntity"/>
+
+    </session-factory>
+
+</hibernate-configuration>
